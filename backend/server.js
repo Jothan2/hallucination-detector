@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 const MODELS = [
-  { id: "llama-3.3-70b-versatile",  name: "LLaMA 3.3 70B",  provider: "Meta" },
-  { id: "llama-3.1-8b-instant",     name: "LLaMA 3.1 8B",   provider: "Meta" },
-  { id: "compound-beta",            name: "Compound Beta",   provider: "Groq" },
+  { id: "llama-3.3-70b-versatile",  name: "LLaMA 3.3 70B",    provider: "Meta" },
+  { id: "llama-3.1-8b-instant",     name: "LLaMA 3.1 8B",     provider: "Meta" },
+  { id: "groq/compound-mini",       name: "Compound Mini",     provider: "Groq" },
 ];
 async function queryModel(modelId, systemPrompt, userMessage) {
   const response = await axios.post(

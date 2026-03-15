@@ -1,0 +1,173 @@
+================================================================
+        HALLUCINATION DETECTOR — SETUP GUIDE
+================================================================
+
+WHAT YOU NEED TO INSTALL
+--------------------------
+1. Node.js (v18 or higher)  →  nodejs.org
+2. VS Code (recommended)    →  code.visualstudio.com
+
+
+================================================================
+STEP 1 — INSTALL NODE.JS
+================================================================
+1. Go to nodejs.org
+2. Click the big "Download LTS" button
+3. Run the installer → click Next → Next → Finish
+4. Open PowerShell and verify it worked:
+
+        node --version
+        npm --version
+
+Both should show a version number like v22.0.0
+
+
+================================================================
+STEP 2 — GET A FREE GROQ API KEY
+================================================================
+1. Go to console.groq.com
+2. Click Sign Up → create a free account
+3. Click "API Keys" on the left sidebar
+4. Click "Create API Key" → give it any name
+5. Copy the key — it starts with gsk_...
+
+⚠ IMPORTANT: Save it somewhere safe — you only see it once!
+
+
+================================================================
+STEP 3 — SET UP THE PROJECT
+================================================================
+
+3a. Install frontend packages
+     Open PowerShell and run:
+
+        cd "C:\path\to\hallucination-detector"
+        npm install
+
+3b. Install backend packages
+
+        cd "C:\path\to\hallucination-detector\backend"
+        npm install
+
+⚠ Make sure you run npm install in BOTH folders
+
+
+================================================================
+STEP 4 — ADD YOUR API KEY
+================================================================
+1. Open the project folder
+2. Find the file called .env
+3. Open it with Notepad
+4. It should look exactly like this:
+
+        REACT_APP_ANTHROPIC_KEY=gsk_paste_your_key_here
+
+5. Replace gsk_paste_your_key_here with your actual Groq key
+6. Save the file
+
+⚠ No spaces, no quotes, no blank lines around the key
+
+
+================================================================
+STEP 5 — RUN THE APP (do this every time)
+================================================================
+
+You need TWO PowerShell windows open at the same time.
+
+--- Terminal 1 — Start the Backend ---
+        cd "C:\path\to\hallucination-detector\backend"
+        node server.js
+
+You should see:
+        ✅ Backend running on http://localhost:5000
+
+Keep this window open the entire time!
+
+--- Terminal 2 — Start the Frontend ---
+        cd "C:\path\to\hallucination-detector"
+        npm start
+
+Your browser will automatically open at:
+        http://localhost:3000
+
+
+================================================================
+STEP 6 — USE THE APP
+================================================================
+- Type any prompt in the box and press Enter
+- All 3 AI models analyze it simultaneously
+- Results appear side by side with scores and claim breakdowns
+
+Try these example prompts:
+  > Fake person   — Tell me about Dr. Rajesh Nambiar's research
+                    on neural memory compression at IIT Madras
+  > Fake event    — What happened at the 2019 Thrissur
+                    International AI Conference?
+  > Dead speaker  — What did Einstein say in his 1962 TED talk?
+  > Wrong year    — Who won the FIFA World Cup in 1987?
+
+
+================================================================
+FOLDER STRUCTURE
+================================================================
+
+hallucination-detector/
+├── backend/
+│   ├── server.js         ← backend server
+│   ├── package.json
+│   └── node_modules/
+├── src/
+│   └── App.js            ← main UI
+├── public/
+├── .env                  ← your API key goes here
+├── package.json
+└── node_modules/
+
+
+================================================================
+STOPPING THE APP
+================================================================
+Press Ctrl + C in both terminals to stop.
+
+
+================================================================
+STARTING AGAIN NEXT TIME
+================================================================
+Just repeat Step 5 — open two terminals and run both commands.
+Everything else is a one-time setup!
+
+
+================================================================
+TROUBLESHOOTING
+================================================================
+
+Problem: react-scripts not found
+Fix:     Run npm install inside the main project folder
+
+Problem: Cannot connect to backend
+Fix:     Make sure Terminal 1 is open and shows ✅
+
+Problem: Analysis failed
+Fix:     Check .env file has the correct Groq key
+         Then restart both terminals
+
+Problem: Model unavailable
+Fix:     The model was deprecated by Groq
+         Contact the developer to update the model name
+
+Problem: Port 3000 already in use
+Fix:     Type Y when asked to use a different port
+
+Problem: Port 5000 already in use
+Fix:     Change 5000 to 5001 in server.js and App.js
+
+
+================================================================
+CONTACT / NOTES
+================================================================
+- The app compares 3 AI models: LLaMA 3.3 70B, LLaMA 3.1 8B,
+  and LLaMA 3 70B — all hosted on Groq for free
+- Your Groq API key covers all 3 models — no extra keys needed
+- Internet connection is required to run the app
+
+================================================================
